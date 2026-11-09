@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaos Şehri: Chaos City | Vortex Interactive</title>
+    <meta name="description" content="Açık dünyada geçen çok oyunculu sosyal çıkarım, sabotaj ve aksiyon oyunu. Vortex Interactive gururla sunar.">
+    <link rel="icon" type="image/jpeg" href="assets/vortex_mascot.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-card: #131b2e;
+            --bg-card-hover: #1c2742;
+            --primary: #ff6b35;
+            --primary-glow: rgba(255, 107, 53, 0.35);
+            --secondary: #00f0ff;
+            --secondary-glow: rgba(0, 240, 255, 0.25);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #24304f;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(255, 107, 53, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(0, 240, 255, 0.08) 0%, transparent 40%);
+        }
+
+        /* HEADER / NAVBAR */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            background: rgba(11, 15, 25, 0.85);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .brand img {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            box-shadow: 0 0 16px var(--primary-glow);
+        }
+
+        .brand-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-text span {
+            font-size: 0.75rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(255, 107, 53, 0.15);
+            border: 1px solid rgba(255, 107, 53, 0.4);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            animation: pulse 2.5s infinite;
+        }
+
+        .badge-live::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .hero h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 span.gradient {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff914d 50%, #00f0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.lead {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 760px;
+            margin: 0 auto 36px;
+        }
+
+        .cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #e85924 100%);
+            color: #ffffff;
+            box-shadow: 0 8px 24px var(--primary-glow);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--secondary);
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* SCREENSHOT PREVIEW HERO */
+        .hero-banner {
+            max-width: 1100px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 107, 53, 0.15);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* FEATURES SECTION */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-header h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 32px 28px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            background: var(--bg-card-hover);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 2.4rem;
+            margin-bottom: 18px;
+            display: inline-block;
+        }
+
+        .feature-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.55;
+        }
+
+        /* GALLERY */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            background: #000;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 30px var(--secondary-glow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-card);
+        }
+
+        /* SPECS */
+        .specs-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .specs-table th, .specs-table td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .specs-table th {
+            background: rgba(0, 0, 0, 0.25);
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .specs-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: rgba(7, 10, 18, 0.95);
+            padding: 48px 24px 36px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .footer-brand img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <img src="assets/vortex_mascot.jpg" alt="Vortex Interactive">
+                <div class="brand-text">
+                    <h1>Kaos Şehri</h1>
+                    <span>VORTEX INTERACTIVE</span>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="#features" class="nav-link">Özellikler</a>
+                <a href="#gallery" class="nav-link">Galeri</a>
+                <a href="#specs" class="nav-link">Sistem</a>
+                <a href="https://drive.google.com/file/d/1PyMlXO8MUOmiWPegFLwvOKbOrqd_kqF4/view?usp=sharing" target="_blank" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.85rem;">Hemen İndir</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="badge-live">ERKEN ERİŞİM ALFA SÜRÜMÜ YAYINDA</div>
+        <h2>Açık Dünyada <span class="gradient">Sosyal Çıkarım</span> & Şehir Kaosu</h2>
+        <p class="lead">
+            <em>Among Us</em> ve <em>Goose Goose Duck</em> gizemi, devasa bir düşük poligon şehirde hayat buluyor. Şehir altyapısını onarın, sabotajcıları açığa çıkarın veya tüm şehrin elektriğini kesip kaos yaratın!
+        </p>
+
+        <div class="cta-group">
+            <a href="https://drive.google.com/file/d/1PyMlXO8MUOmiWPegFLwvOKbOrqd_kqF4/view?usp=sharing" target="_blank" class="btn btn-primary">
+                <span>🎮</span> Windows İçin İndir (.zip)
+            </a>
+            <a href="https://itch.io" target="_blank" class="btn btn-secondary">
+                <span>🕹️</span> Itch.io'da İncele
+            </a>
+            <a href="https://www.uptodown.com" target="_blank" class="btn btn-secondary">
+                <span>📲</span> Uptodown
+            </a>
+        </div>
+
+        <div class="hero-banner">
+            <img src="assets/screenshot_district.png" alt="Kaos Şehri Açık Dünya Görünümü">
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+        <div class="section-header">
+            <h3>Şehre Hükmetmek Senin Elinde</h3>
+            <p>Oturum bazlı çok oyunculu dinamikler, kesintisiz mekanikler ve taktiksel serbestlik.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h4>Anlık FPS ⇄ TPS Kamera</h4>
+                <p>Klavyedeki <strong>V</strong> tuşu veya gamepad tetik tuşu ile anında izometrik bakış açısından birinci şahıs (FPS) moduna geçin.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h4>Sabotaj & Şehir Karartması</h4>
+                <p>Trafoları havaya uçurun; tüm sokak lambaları ve şehir ışıkları anında sönsün. Karanlıkta rakiplerinizi pusuya düşürün.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🚪</div>
+                <h4>10+ İnteraktif İç Mekan</h4>
+                <p>Polis karakolu, banka kasası, hastane, metro istasyonu ve güvenli evlere kapılardan kesintisiz giriş yapın.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🚗</div>
+                <h4>Otonom Şehir & Sürüş</h4>
+                <p>Sokaklarda dolaşan devriye araçlarına binin, yayalarla dolu canlı metropolde görevlerinize yetişin.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎭</div>
+                <h4>Gizli Roller & Mini Oyunlar</h4>
+                <p>20 dakikadan 90 dakikaya kadar süren özel lobi maçlarında arkadaşlarınızla sosyal çıkarım heyecanını yaşayın.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌅</div>
+                <h4>Dinamik Gece & Gündüz</h4>
+                <p>Gerçek zamanlı gökyüzü rotasyonu ve günün saatine göre değişen şehir aydınlatma atmosferi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section" id="gallery">
+        <div class="section-header">
+            <h3>Oyundan Kareler</h3>
+            <p>Canlı düşük poligon görsel stil ve detaylı iç mekanlar.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="assets/screenshot_night.png" alt="Gece Atmosferi">
+                <div class="gallery-caption">Belediye Meydanı Gece Işıklandırması</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/screenshot_police.png" alt="Polis Karakolu İçi">
+                <div class="gallery-caption">Polis Karakolu İç Mekanı</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/screenshot_hospital.png" alt="Hastane İçi">
+                <div class="gallery-caption">Hastane ve Acil Servis</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/screenshot_topdown.png" alt="Kuşbakışı Şehir">
+                <div class="gallery-caption">Şehir Haritası Kuşbakışı Görünüm</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECS -->
+    <section class="section" id="specs">
+        <div class="section-header">
+            <h3>Sistem Gereksinimleri</h3>
+            <p>Godot Engine ile optimize edilmiş hafif ve akıcı performans.</p>
+        </div>
+
+        <table class="specs-table">
+            <thead>
+                <tr>
+                    <th>Bileşen</th>
+                    <th>Minimum Gereksinim</th>
+                    <th>Önerilen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>İşletim Sistemi</strong></td>
+                    <td>Windows 10 64-bit</td>
+                    <td>Windows 11 64-bit</td>
+                </tr>
+                <tr>
+                    <td><strong>İşlemci</strong></td>
+                    <td>Intel Core i3 / AMD Ryzen 3</td>
+                    <td>Intel Core i5 / AMD Ryzen 5</td>
+                </tr>
+                <tr>
+                    <td><strong>Bellek (RAM)</strong></td>
+                    <td>4 GB RAM</td>
+                    <td>8 GB RAM</td>
+                </tr>
+                <tr>
+                    <td><strong>Ekran Kartı</strong></td>
+                    <td>DirectX 12 / Vulkan Uyumlu</td>
+                    <td>GTX 1060 / RX 580 veya üstü</td>
+                </tr>
+                <tr>
+                    <td><strong>Depolama</strong></td>
+                    <td>2 GB boş alan</td>
+                    <td>2 GB SSD</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-brand">
+            <img src="assets/vortex_mascot.jpg" alt="Vortex Interactive">
+            <strong>Vortex Interactive</strong>
+        </div>
+        <p class="footer-text">Kaos Şehri: Chaos City © 2026 Vortex Interactive. Tüm hakları saklıdır.</p>
+        <p class="footer-text" style="margin-top: 6px; font-size: 0.8rem; color: #64748b;">Powered by Godot Engine 4 (C# / .NET)</p>
+        <div class="footer-links">
+            <a href="https://github.com/egedogandemir/kaos-city" target="_blank">GitHub</a>
+            <a href="https://drive.google.com/file/d/1PyMlXO8MUOmiWPegFLwvOKbOrqd_kqF4/view?usp=sharing" target="_blank">İndir</a>
+        </div>
+    </footer>
+
+</body>
+</html>
